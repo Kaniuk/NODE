@@ -36,30 +36,28 @@ let inPersonUsers = [
     {name: "Ihor", age: 33, city: "Lviv"},
     {name: "Oleg", age: 20, city: "Lviv"}
 ];
-/*
-for (let i = 0; i < onlineUsers.length; i++) {
-    const user = onlineUsers[i];
-    fs.appendFile(
-        path.join(__dirname, 'main', 'online', 'online.txt'), `NAME:${user.name},AGE:${user.age},CITY:${user.city}\n`,
-        (err) => {
-            if (err) {
-                console.log(err);
-                throw (err);
+
+function appendUsersToFile(path, users) {
+    for (const user of users) {
+        fs.appendFile(
+            path,
+            `NAME:${user.name},AGE:${user.age},CITY:${user.city}\n`,
+            (err) => {
+                if (err) {
+                    console.log(err);
+                    throw (err);
+                }
             }
-        }
-    );
+        );
+    }
 }
-for (const PersonUser of inPersonUsers) {
-    fs.appendFile(
-        path.join(__dirname, 'main', 'inPerson', 'inPerson.txt'), `NAME:${PersonUser.name},AGE:${PersonUser.age},CITY:${PersonUser.city}\n`,
-        (err) => {
-            if (err) {
-                console.log(err);
-                throw (err);
-            }
-        }
-    );
-}*/
+
+/*
+appendUsersToFile(path.join(__dirname, 'main', 'online', 'online.txt'), onlineUsers);
+appendUsersToFile(path.join(__dirname, 'main', 'inPerson', 'inPerson.txt'), inPersonUsers);
+*/
+
+
 const inPersonPath = path.join(__dirname, 'main', 'inPerson', 'inPerson.txt');
 const onlinePath = path.join(__dirname, 'main', 'online', 'online.txt');
 fs.readFile(inPersonPath, 'utf8', (err, inPersonData) => {
