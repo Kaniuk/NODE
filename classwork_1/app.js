@@ -38,39 +38,42 @@ let onlineUsers = [
 ];
 
 
-/*const secondTextPath = path.join(__dirname, 'files', 'file1.txt');
+const secondTextPath = path.join(__dirname, 'files', 'file1.txt');
 const newFolderPath = path.join(__dirname, 'new', 'newFolder');
+let userStr = '';
 for (const user of onlineUsers) {
-    fs.appendFile(secondTextPath,
-        `NAME:${user.name},AGE:${user.age},CITY:${user.city}\n`,
-        (err) => {
+    userStr += `NAME:${user.name},AGE:${user.age},CITY:${user.city}\n`;
+}
+fs.appendFile(secondTextPath,
+    userStr,
+    (err) => {
+        if (err) {
+            console.log(err);
+            throw (err);
+        }
+        fs.readFile(secondTextPath, 'utf8', (err, textData) => {
             if (err) {
                 console.log(err);
                 throw (err);
             }
-            fs.readFile(secondTextPath, 'utf8', (err, textData) => {
+            fs.mkdir(newFolderPath, {recursive: true}, (err) => {
                 if (err) {
                     console.log(err);
                     throw (err);
                 }
-                fs.mkdir(newFolderPath, {recursive: true}, (err) => {
-                    if (err) {
-                        console.log(err);
-                        throw (err);
-                    }
-                    fs.appendFile(path.join(__dirname, 'new', 'newFolder', 'new.txt'), textData, {flag: 'w'},
-                        (err) => {
-                            if (err) {
-                                console.log(err);
-                                throw (err);
-                            }
-                            fs.unlink(secondTextPath, () => {
-                            });
+                fs.appendFile(path.join(__dirname, 'new', 'newFolder', 'new.txt'), textData, {flag: 'w'},
+                    (err) => {
+                        if (err) {
+                            console.log(err);
+                            throw (err);
+                        }
+                        fs.unlink(secondTextPath, () => {
                         });
-                });
+                    });
             });
         });
-}*/
+    });
+
 
 // 3. Створіть папку (можете вручну) напишіть скріпт який створить в ній якись дані (можуть бути нові папки і файли(в файли
 // запишіть якусь дату) ) і напишіть функцію яка буде зчитувати папку і перевіряти якщо дані які в ній лежать - це файли

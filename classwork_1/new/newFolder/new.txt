@@ -1,6 +1,0 @@
-NAME:Andrii,AGE:22,CITY:Lviv
-NAME:Sergii,AGE:33,CITY:Kyiv
-NAME:Vasyl,AGE:20,CITY:Rivne
-NAME:Andrii,AGE:22,CITY:Lviv
-NAME:Sergii,AGE:33,CITY:Kyiv
-NAME:Vasyl,AGE:20,CITY:Rivne
