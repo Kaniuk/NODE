@@ -1,6 +1,7 @@
 body {
-    background:lightsteelblue;
+    background: lightsteelblue;
 }
+
 .users {
     width: 20vw;
     background: lavender;
@@ -17,7 +18,8 @@ body {
     font-size: 20px;
     font-weight: bold;
 }
-form {
+
+form, h1 {
     font-size: 20px;
     text-align: center;
     margin: 50px;
@@ -28,6 +30,7 @@ input {
     border: 0.1em solid black;
     border-radius: 5px;
 }
+
 .login {
     padding: 0.35em 1.2em;
     border: 0.1em solid black;
@@ -40,6 +43,7 @@ input {
     cursor: pointer;
 
 }
+
 .login:hover {
     background-color: darkslategrey;
     color: #FFFF;
@@ -49,4 +53,8 @@ input {
 .login:active {
     background-color: darkslategrey;
     box-shadow: 0 5px black;
+}
+h1 {
+    font-size: 35px;
+    font-weight: bold;
 }

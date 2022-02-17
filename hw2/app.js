@@ -5,6 +5,10 @@
 // 3. /user/:id сторінка з інфою про одного юзера
 // 4. зробити якщо не відпрацюють ендпоінти то на сторінку notFound редірект
 
+// - додайте ендпоінт signIn який буде приймати email і password і якщо все вірно то редірект на сторінку цього
+// * хто хоче складніше реалізуйте видалення користувача. Кнопка повинна знаходитись на сторінці з інфою про одного юзера.
+//     Після видалення редірект на "/users"
+
 
 const express = require('express');
 const path = require('path');
@@ -17,7 +21,8 @@ const users = [
         email: 'ivan@.net',
         password: '111',
         age: 22,
-        city: 'Lviv'
+        city: 'Lviv',
+
     },
     {
         firstName: 'Vasyl',
@@ -74,6 +79,10 @@ app.get('/users/:userId', (req, res) => {
     res.render('user', users[userId - 1]);
 });
 
+app.get('/signIn', (req, res) => {
+    res.render('signIn');
+});
+
 app.post('/login', (req, res) => {
     const user = req.body;
 
@@ -85,6 +94,25 @@ app.post('/login', (req, res) => {
         res.redirect('/users');
     }
 });
+
+app.post('/signIn', (req, res) => {
+    const userInfo = req.body;
+
+    const dbUserIndex = users.findIndex((user) => user.email === userInfo.email);
+    if (dbUserIndex === -1) {
+        res.redirect('/notFound');
+        return;
+    }
+    const dbUser = users[dbUserIndex];
+
+    if (userInfo.password !== dbUser.password) {
+        res.redirect('/notFound');
+        return;
+    }
+
+    res.redirect(`/users/${dbUserIndex + 1}`);
+});
+
 
 app.use((req, res) => {
     res.render('notFound');
