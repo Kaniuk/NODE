@@ -1,0 +1,52 @@
+body {
+    background:lightsteelblue;
+}
+.users {
+    width: 20vw;
+    background: lavender;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.user {
+    width: 20vw;
+    background: lavender;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+form {
+    font-size: 20px;
+    text-align: center;
+    margin: 50px;
+}
+
+input {
+    padding: 5px;
+    border: 0.1em solid black;
+    border-radius: 5px;
+}
+.login {
+    padding: 0.35em 1.2em;
+    border: 0.1em solid black;
+    margin: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+    color: black;
+    text-align: center;
+    transition: all 0.2s;
+    cursor: pointer;
+
+}
+.login:hover {
+    background-color: darkslategrey;
+    color: #FFFF;
+    cursor: pointer;
+}
+
+.login:active {
+    background-color: darkslategrey;
+    box-shadow: 0 5px black;
+}
