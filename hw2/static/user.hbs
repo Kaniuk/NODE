@@ -16,6 +16,9 @@
     <div>Password:{{this.password}}</div>
     <div>Age:{{this.age}}</div>
     <div>City:{{this.city}}</div>
+    <form action="/users/{{this.id}}/delete" method="post">
+        <button class="delete-user">Delete</button>
+    </form>
 </div>
 </body>
 </html>

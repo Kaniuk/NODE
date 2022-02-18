@@ -11,15 +11,16 @@
 </head>
 <body>
 <div class="users">
-{{#each users}}
-    <div>First name:{{this.firstName}}</div>
-    <div>Last name:{{this.lastName}}</div>
-    <div>Email:{{this.email}}</div>
-    <div>Password:{{this.password}}</div>
-    <div>Age:{{this.age}}</div>
-    <div>City:{{this.city}}</div>
-    <hr>
-{{/each}}
+    {{#each users}}
+        <div>First name:{{this.firstName}}</div>
+        <div>Last name:{{this.lastName}}</div>
+        <div>Email:{{this.email}}</div>
+        <div>Password:{{this.password}}</div>
+        <div>Age:{{this.age}}</div>
+        <div>City:{{this.city}}</div>
+        <a href="/users/{{inc @index}}">Show details</a>
+        <hr>
+    {{/each}}
 </div>
 
 </body>

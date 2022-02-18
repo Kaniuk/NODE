@@ -13,6 +13,11 @@
 const express = require('express');
 const path = require('path');
 const {engine} = require('express-handlebars');
+const Handlebars = require('handlebars');
+
+Handlebars.registerHelper('inc', function (value, options) {
+    return parseInt(value) + 1;
+});
 
 const users = [
     {
@@ -75,8 +80,21 @@ app.get('/users', (req, res) => {
 
 app.get('/users/:userId', (req, res) => {
     const {userId} = req.params;
+    const user = {
+        ...users[userId - 1],
+        id: userId,
+    };
     // res.json(users[userId-1]);
-    res.render('user', users[userId - 1]);
+    res.render('user', user);
+});
+
+app.post('/users/:userId/delete', (req, res) => {
+    const {userId} = req.params;
+    const deleteUserIndex = userId - 1;
+
+    users.splice(deleteUserIndex, 1);
+
+    res.redirect('/users');
 });
 
 app.get('/signIn', (req, res) => {
@@ -113,11 +131,9 @@ app.post('/signIn', (req, res) => {
     res.redirect(`/users/${dbUserIndex + 1}`);
 });
 
-
 app.use((req, res) => {
     res.render('notFound');
 });
-
 
 app.listen(5100, () => {
     console.log('Server has started on PORT 5100');
