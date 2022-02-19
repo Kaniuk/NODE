@@ -1,23 +1,13 @@
 const {Router} = require('express');
 const users = require('../db/users');
+const LoginController = require('../controllers/loginController');
+
 
 const loginRouter = Router();
 
-loginRouter.get('/', (req, res) => {
-    res.render('login');
-});
+loginRouter.get('/', LoginController.renderLogin);
 
-loginRouter.post('/', (req, res) => {
-    const user = req.body;
-
-    const isEmailExist = users.some((registerUser) => registerUser.email === user.email);
-    if (isEmailExist) {
-        res.redirect('/notFound');
-    } else {
-        users.push(user);
-        res.redirect('/users');
-    }
-});
+loginRouter.post('/',LoginController.checkLogin)
 
 
 module.exports = loginRouter;
