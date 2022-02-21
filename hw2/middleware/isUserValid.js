@@ -5,9 +5,8 @@ function isUserValid(req, res, next) {
             throw new Error('email or password is not valid');
         }
         next();
-    } catch (err) {
-        console.log(err);
-        res.status(400).send(err.message);
+    } catch ({message}) {
+        res.redirect(`/error?error=${message}`);
     }
 }
 

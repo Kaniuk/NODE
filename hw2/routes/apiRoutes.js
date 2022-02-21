@@ -9,4 +9,8 @@ routes.use('/users', userRouter);
 routes.use('/login', loginRouter);
 routes.use('/signIn', signInRouter);
 
+routes.get('/error', ({ query }, res) => {
+    res.render('error', { error: query.error });
+});
+
 module.exports = routes;

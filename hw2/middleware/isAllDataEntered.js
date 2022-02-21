@@ -5,9 +5,8 @@ function isAllDataEntered(req, res, next) {
             throw new Error('enter data in all fields');
         }
         next();
-    } catch (err) {
-        console.log(err);
-        res.status(400).send(err.message);
+    } catch ({message}) {
+        res.redirect(`/error?error=${message}`);
     }
 }
 
