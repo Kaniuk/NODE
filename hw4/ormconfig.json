@@ -4,8 +4,9 @@
   "port": 3306,
   "username": "root",
   "password": "9madaboutyou",
-  "database": "new_schema",
+  "database": "okten2",
   "synchronize": true,
+  "migrationsRun": false,
   "logging": false,
   "entities": [
     "src/entity/**/*.ts"
